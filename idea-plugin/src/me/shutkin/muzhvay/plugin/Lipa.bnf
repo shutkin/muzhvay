@@ -1,0 +1,26 @@
+{
+  parserClass="me.shutkin.muzhvay.plugin.parser.LipaParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Lipa"
+  psiImplClassSuffix="Impl"
+  psiPackage="me.shutkin.muzhvay.plugin.psi"
+  psiImplPackage="me.shutkin.muzhvay.plugin.psi.impl"
+
+  elementTypeHolderClass="me.shutkin.muzhvay.plugin.psi.LipaTypes"
+  elementTypeClass="me.shutkin.muzhvay.plugin.psi.LipaElementType"
+  tokenTypeClass="me.shutkin.muzhvay.plugin.psi.LipaTokenType"
+
+  psiImplUtilClass="me.shutkin.muzhvay.plugin.psi.impl.LipaPsiImplUtils"
+}
+
+root ::= scheme? node
+scheme ::= SCHEME_TOKEN {methods=[getReference]}
+node ::= COMMENT? node_body node_children? {recoverWhile=node_recover; methods=[getKey getValues getFirstValue getAttributes]}
+private node_recover ::= !(',' | '}')
+node_children ::= CHILDREN_BEGIN node (SEPARATOR node)* CHILDREN_END {pin=1}
+node_body ::= key value_content* attributes?
+key ::= KEY_TOKEN {methods=[getReference]}
+attributes ::= ATTR_BEGIN ATTRIBUTE* ATTR_END {pin=1}
+value_content ::= (VALUE | VALUE_STRING) {implements="com.intellij.psi.PsiNameIdentifierOwner"; methods=[getValue getNameIdentifier getName setName]}

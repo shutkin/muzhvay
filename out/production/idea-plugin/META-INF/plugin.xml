@@ -1,0 +1,53 @@
+<idea-plugin>
+  <id>me.shutkin.muzhvay</id>
+  <name>Muzhvay</name>
+  <version>0.1</version>
+  <vendor email="shootkin@gmail.com" url="https://github.com/shutkin/muzhvay">Shutkin</vendor>
+
+  <description><![CDATA[
+      Muzhvay Project plugin
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Alpha version
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="172.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileTypeFactory implementation="me.shutkin.muzhvay.plugin.LipaFileTypeFactory"/>
+    <lang.parserDefinition language="Lipa" implementationClass="me.shutkin.muzhvay.plugin.LipaParserDefinition"/>
+    <lang.syntaxHighlighterFactory language="Lipa" implementationClass="me.shutkin.muzhvay.plugin.LipaSyntaxHighlighterFactory"/>
+    <annotator language="Lipa" implementationClass="me.shutkin.muzhvay.plugin.LipaAnnotator"/>
+    <completion.contributor language="Lipa" implementationClass="me.shutkin.muzhvay.plugin.LipaCompletionContributor"/>
+    <!--
+    <lang.formatter language="Lipa" implementationClass="me.shutkin.muzhvay.plugin.formatter.LipaFormattingModelBuilder"/>
+    <codeStyleSettingsProvider implementation="me.shutkin.muzhvay.plugin.formatter.LipaCodeStyleSettingsProvider"/>
+    <langCodeStyleSettingsProvider implementation="me.shutkin.muzhvay.plugin.LipaLanguageCodeStyleSettingsProvider"/>
+    -->
+  </extensions>
+
+  <application-components>
+    <component>
+      <implementation-class>me.shutkin.muzhvay.plugin.filesystem.MuzhvayHardcodedFileSystem</implementation-class>
+      <interface-class>com.intellij.openapi.vfs.VirtualFileSystem</interface-class>
+    </component>
+  </application-components>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="Muzhvay.JSONCodeGeneration" class="me.shutkin.muzhvay.plugin.actions.JSONCodeGenerateAction"
+            text="Generate _JSON deserializers" description="Generate Kotlin code for deserializing JSON objects">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+  </actions>
+
+</idea-plugin>

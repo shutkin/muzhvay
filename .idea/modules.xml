@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/idea-plugin/idea-plugin.iml" filepath="$PROJECT_DIR$/idea-plugin/idea-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/lipa/lipa.iml" filepath="$PROJECT_DIR$/lipa/lipa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-json/test-json.iml" filepath="$PROJECT_DIR$/test-json/test-json.iml" />
     </modules>
   </component>
 </project>

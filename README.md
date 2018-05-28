@@ -1,11 +1,11 @@
 # Muzhvay Project
 
 Currently consists of:
-- Very basic Lipa parser written in Kotlin
-- Lipa language plugin for Intellij Idea
-- Kotlin code generation for JSON deserialization
+* Very basic Lipa parser written in Kotlin
+* Lipa language plugin for Intellij Idea
+* Kotlin code generation for JSON deserialization
 
-##Lipa language
+## Lipa language
 
 Lipa is a minimalistic JSON-like format for definition of a tree-structured data. Each node in the Lipa data has a key and 
 unlimited set of attributes, values and child nodes. Here is an example:<br>
@@ -19,7 +19,8 @@ Set of rules can be applied to Lipa files by referencing to a scheme (which is a
 have, what type of children could a specific node contains, how much values can a specific node have, what attributes can 
 be applied to a node etc. Reference to a scheme must be defined before root node inside of square brackets in the Lipa file.
 
-#Idea Plugin
+## Idea Plugin
+
 Plugin provides syntax highlighting, annotation for format errors and scheme validation errors, autocompletion for nodes 
 keys and attributes and referencing to a scheme elements. Autocompletion for scheme names, settings for syntax highlighting 
 and text formatting currently is in the developing.<br>
@@ -28,7 +29,7 @@ Plugin have two hardcoded schemes: *lipa-scheme* and *json-scheme*. *lipa-scheme
 Command *"Generate JSON deserializers"* In the *Tools* menu will generate (or rewrite) Kotlin sources for all Lipa files 
 in the project that uses scheme *json-scheme*.  
 
-##JSON deserializer generation
+## JSON deserializer generation
 
 Generator creates a Kotlin source code for deserializing JSON data to a strongly typed immutable data objects. Generated 
 sources consists of a single Kotlin file with no additional dependencies. In that file there is a public data classes and 

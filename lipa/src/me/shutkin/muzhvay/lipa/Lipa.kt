@@ -107,7 +107,7 @@ private fun createNewNode(context: ParserContext): LipaNode? {
   return newNode
 }
 
-fun parse(stream: InputStream): LipaFile {
+fun parseLipa(stream: InputStream): LipaFile {
   var context = ParserContext(ParseState.ROOT, null)
   var rootNode: LipaNode? = null
   var schemeName: String? = null
@@ -129,7 +129,7 @@ fun parse(stream: InputStream): LipaFile {
 
 fun main(args: Array<String>) {
   val stream = FileInputStream(args[0])
-  val lipa = parse(stream)
+  val lipa = parseLipa(stream)
   println(lipa)
   stream.close()
 }

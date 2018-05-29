@@ -20,8 +20,6 @@ import me.shutkin.muzhvay.plugin.psi.LipaTypes;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -68,7 +66,7 @@ public class JSONCodeGenerateAction extends AnAction {
     for (int i = 0; i < sourceRoots.length; i++)
       sourceRootPaths[i] = sourceRoots[i].getCanonicalPath();
     try {
-      me.shutkin.muzhvay.lipa.LipaFile lipaFile = Lipa.parse(file.getInputStream());
+      me.shutkin.muzhvay.lipa.LipaFile lipaFile = Lipa.parseLipa(file.getInputStream());
       if (lipaFile.getRootNode() != null) {
         final List<LipaNode> rootChildren = lipaFile.getRootNode().getChildren();
         final Optional<LipaNode> packageOptional = rootChildren.stream().filter(node -> node.getKey().equals("package")).findAny();

@@ -1,0 +1,18 @@
+[json-scheme]
+json-model {
+  package me.shutkin.muzhvay.testjson, class ParserKt,
+
+  definition TestObject <read> {
+    long id,
+    string title,
+    array TestChildObject children,
+    object TestObject next
+  },
+  definition TestChildObject {
+    int index,
+    string name,
+    array int data,
+    double factor,
+    boolean isAlive
+  }
+}
